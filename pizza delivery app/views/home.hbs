@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="#aboutus">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Menu
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#veg">Veg</a>
+                <a href="#nonveg">Non-veg</a>
+                {{!-- <a href="#desserts">Desserts</a>
+                <a href="#beverages">Beverages</a> --}}
+            </div>
+        </div>
+
+        {{#if name}}
+        <div class="dropdown">
+            <button class="dropbtn">{{name}}
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <form method="post" action="/editprofile">
+                    <a onclick="this.parentNode.submit();">Edit Profile</a>
+                </form>
+                <a href="/orderhistory">Order History</a>
+                <form method="post" action="/logout">
+                    <a onclick="this.parentNode.submit();">Logout</a>
+                </form>
+                <a href="/selectlocation">Select location</a>
+                <form method="post" action="/deleteuser">
+                    <a onclick="this.parentNode.submit();">Delete Account</a>
+                </form>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Select order type
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <form method="post" action="/homedelivery">
+                    <a onclick="this.parentNode.submit();">Home delivery</a>
+                </form>
+
+                <form method="post" action="/dinein">
+                    <a onclick="this.parentNode.submit();">Dine in</a>
+                </form>
+            </div>
+        </div>
+        {{#if edit}}
+        <div class="dropdown">
+            <button class="dropbtn">Change current order
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <form method="post" action="/editorder">
+                    <a onclick="this.parentNode.submit();">Edit order</a>
+                </form>
+
+                <form method="post" action="/deleteorder">
+                    <a onclick="this.parentNode.submit();">Cancel order</a>
+                </form>
+
+                <form method="post" action="/canceledit">
+                    <a onclick="this.parentNode.submit();">Cancel editing order</a>
+                </form>
+                
+            </div>
+            {{/if}}
+        </div>
+        {{else}}
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+        {{/if}}
+    </div>
+
+    <div id="aboutus">
+        <div>
+            <h2>About Us</h2>
+        </div>
+        <img class="logo"
+            src="https://res.cloudinary.com/ash006/image/upload/v1621788264/Felicita_Pizzeria_1_cunl47.png"
+            alt="FelicitaPizzeria.com">
+        <p>Felicita pizzeria is a pizza delivery project in which you can order your favourite pizzas for home delivery
+            or for dine in orders. You can choose order location, edit cancel order and change your profile details if
+            you want </p>
+    </div>
+
+    <div class="foodheader">
+        <h2>Veg Pizza</h2>
+    </div>
+
+    <div class="common" id="veg">
+        <div>
+            <h3>Peppy Paneer Pizza</h3>
+            <p>Price Rs395</p>
+            <img src="https://res.cloudinary.com/ash006/image/upload/v1622089450/peppy-paneer-pizza_sn9y2t.jpg">
+
+            <input type="number" id="peppypaneerpizza" name="peppypaneerpizza" min="0" max="20">
+        </div>
+
+        <div>
+            <h3>Cheese and corn pizza</h3>
+            <p>Price Rs305</p>
+            <img src="https://res.cloudinary.com/ash006/image/upload/v1622089245/cheese-and-corn-pizza_dsjho7.webp"
+                alt="">
+            <input type="number" id="cheeseandcornpizza" name="cheeseandcornpizza" min="0" max="20">
+        </div>
+    </div>
+
+    <div class="foodheader">
+        <h2>Non-Veg Pizza</h2>
+    </div>
+
+    <div class="common" id="nonveg">
+        <div>
+            <h3>Chicken Sausage Pizza</h3>
+            <p>Price Rs305</p>
+            <img src="https://res.cloudinary.com/ash006/image/upload/v1622089406/chicken-sausage-pizza_vzcvlo.webp">
+            <input type="number" id="chickensausagepizza" name="chickensausagepizza" min="0" max="20">
+        </div>
+
+        <div>
+            <h3>Indian tandoori chicken tikka pizza</h3>
+            <p>Price Rs570</p>
+            <img src="https://res.cloudinary.com/ash006/image/upload/v1622089406/indian-tandoori-chicken-tikka-pizza_utlv06.webp"
+                alt="">
+            <input type="number" id="indiantandoorichickentikkapizza" name="indiantandoorichickentikkapizza" min="0"
+                max="20">
+        </div>
+    </div>
+
+    {{#if name}}
+    <div class="foodheader">
+        <button id="submitbutton" type="button">Place Order</button>
+    </div>
+    {{/if}}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/home.js"></script>
+</body>
+
+</html>
